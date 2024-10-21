@@ -1,14 +1,9 @@
-# utils
-Various useful tools
+# Lectionaries
+HTML pages to gather conveniently in one place plans for daily (or weekly or whatever) readings from texts
 
-## checkNikud:
+## Mishmara.html
 
-a bash script to perform sanity checking for Hebrew diacritics in text files
+This is the yearly bible and Mishna study plan used by the Syrian community.
+Texts are downloaded using the Sefaria API
 
-## ugrep:
-
-a bash script to find Unicode characters by property
-
-## phoenicify.html
-
-a converter from Hebrew characters to Palaeo-Hebrew (Phoenician)
+Currently there is only one file containing all the html, css and js for the project. As we add more content, we will extract some of this to library files
