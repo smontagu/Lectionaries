@@ -62,7 +62,8 @@ function WriteFrame(response, contentDiv) {
       contentDiv.appendChild(LayoutChapter(chapter, j, firstVerse));
     });
   } else {
-    contentDiv.appendChild(LayoutChapter(response.versions[0].text, 0, 0));
+    contentDiv.appendChild(LayoutChapter(response.versions[0].text, 0,
+                                         firstVerse));
   }
 }
 
