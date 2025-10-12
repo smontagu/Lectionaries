@@ -1,0 +1,153 @@
+/* Page layout */
+:root {
+    color: white;
+    background-color: black;
+    direction: rtl;
+}
+
+#index-wrapper {
+    box-sizing: border-box;
+    float: right;
+    width: 37vw;
+    height: 100vh;
+    position: fixed;
+}
+
+#index-title {
+    height: 8vh;
+}
+
+#index  {
+    height: 88vh;
+    overflow-y: scroll;
+}
+
+.content-wrapper {
+    margin-top: 0.6em;
+}
+
+.content-wrapper:first-child {
+    margin-top: 0px
+}
+
+#content {
+    box-sizing: border-box;
+    float: left;
+    height: 98vh;
+    width: 61vw;
+    padding: 0px 8px;
+    overflow: scroll;
+    border-style: solid;
+}
+
+thead { /* makes the table header fixed when scrolling */
+    position:sticky;
+    top:0;
+    border-top:0;
+    background: #cccccc;
+}
+
+/* Text styling */
+h1 {
+    text-align: center;
+    font-family: Stam Sefarad CLM, Stam Ashkenaz CLM, Guttman Stam;
+    font-size: 32pt;
+}
+
+h2.textHeading {
+    color: teal;
+    font-size: 44pt;
+    margin-top: 0em;
+    margin-bottom: 0.4em;
+}
+
+h3.chapterHeading {
+    font-size: 40pt;
+    color: blue;
+    margin-top: 0.4em;
+    margin-bottom: 0.2em;
+}
+
+#content {
+    font-size: 32pt;
+    font-family: SBL Hebrew, Taamey David CLM, Taamey Frank CLM, SBL Hebrew;
+    text-align: justify;
+}
+
+#index {
+    font-size: 16pt;
+}
+
+button.apiLink {
+    background-color: black;
+    color: lime;
+    border: none;
+    text-decoration: underline;
+    text-align: right;
+    font-size: 16pt;
+}
+
+button.apiLink:hover {
+    background-color: silver;
+    cursor: pointer;
+}
+
+/* Styling for the classes in the text returned by Sefaria: */
+
+/* Ketiv */
+.mam-kq-k {
+    font-size: smaller;
+    color: red;
+}
+
+/* Qere */
+.mam-kq-q {
+    color: green;
+}
+
+/* Parasha Setuma */
+.mam-spi-samekh:before {
+    content: " ";
+    margin-left: 1em;
+}
+
+.mam-spi-samekh:after {
+    content: " ";
+    margin-left: 1em;
+}
+
+/* Parasha Setuma and Petuha */
+.mam-spi-samekh, .mam-spi-pe
+{
+    color: silver;
+    font-size: smaller;
+}
+
+/* Sefaria returns arrays of text with no numbering.
+   Define css counters to add chapter and verse numbering
+   and also add some inter-verse spacing */
+div#content h2 {
+    counter-reset: chapter-number;
+}
+
+div.chapter {
+    counter-reset: verse-number;
+}
+
+h3.chapterHeading:after {
+    counter-increment: chapter-number;
+    content: counter(chapter-number, hebrew);
+    margin-right: 0.25em;
+}
+
+span.verse:after {
+    content: " ";
+    margin-left: 0.2em;
+}
+
+span.verse:before {
+    counter-increment: verse-number;
+    content: counter(verse-number, hebrew);
+    font-size: medium;
+    margin-left: 1em;
+}
