@@ -3,6 +3,7 @@
   <head>
     <meta charset=utf-8>
     <title>Mishmara links</title>
+    <script type="text/javascript" src="lectionaries.js"></script>
     <script type="text/javascript">
      const Mishmara = [
        [
@@ -337,6 +338,8 @@
        ]
      ];
 
+     const version = "source";
+
      function PopulateTable() {
        var table = document.getElementById("tableBody");
 
@@ -349,7 +352,8 @@
            // use innerHTML for the button text so that we can pass in <br> etc.
            var button = document.createElement("button");
            button.className = "apiLink";
-           button.setAttribute("onclick", "CallGetText([" + cell[0] + "]);");
+           button.setAttribute("onclick",
+                               "CallGetText([" + cell[0] + "], version);");
            button.innerHTML = cell[1];
            td.appendChild(button)
 
@@ -359,241 +363,8 @@
        });
      }
 
-     function CallGetText(citations) {
-       const options = {method: 'GET', headers: {accept: 'application/json'}};
-       const baseUrl = "https://www.sefaria.org/api/v3/texts/";
-       const params = "?version=source" +
-                      "&return_format=strip_only_footnotes";
-
-       var frame = document.getElementById("content");
-
-       frame.replaceChildren();
-       citations.forEach((citation, i) => {
-         var url = baseUrl + citation + params;
-
-         // Append the div to the container before calling the API to get its
-         // content, because fetch is async and if we have more than one
-         // citation the second one might finish before the first
-         var contentDiv = document.createElement("div");
-         contentDiv.className = "content-wrapper";
-         frame.appendChild(contentDiv);
-
-         fetch(url, options)
-           .then(response => response.json())
-           .then(response => WriteFrame(response, contentDiv))
-           .catch(err => console.error(err));
-       });
-     }
-
-     function WriteFrame(response, contentDiv) {
-       // "sections" in the json give a reference to the beginning of the
-       // returned text. If whole chapters are requested, the array is
-       // length 1, and contains the first chapter. If the request begins
-       // with a (possibly mid-chapter) verse, as it does implicitly when
-       // making a request by parasha name, the array is length 2 and
-       // includes chapter and verse.
-       // sectionNames specifies the names of the units, but for our purposes
-       // we can assume that they are always "chapter" and "verse" (or
-       // "mishna", but that makes no practical difference at least for now)
-       // We will use these for zero-based CSS counter-reset, so subtract 1
-       var firstChapter = response.sections[0] - 1;
-       var firstVerse =
-         (response.sections.length > 1) ? response.sections[1] - 1: 0;
-
-       // Create a heading for the text. Currently we are using the title
-       // returned by the Sefaria API, which is not ideal: for example when
-       // the citation is a parasha, it converts it to a from chapter and verse/
-       // to chapter and verse citation, and that is what it returns as title
-       var h2 = document.createElement("h2");
-       h2.className = "textHeading";
-       h2.appendChild(document.createTextNode(response.heRef));
-       h2.style.counterReset = "chapter-number " + firstChapter;
-       contentDiv.appendChild(h2);
-
-       // For multi-chapter selection, "text" in the json is an array of
-       // chapters each containing an array of verses. For single-chapter
-       // selection, it is not an array with one member containing an array of
-       // verses, which would be consistent, but just an array of verses. To
-       // handle this we use a helper function to which we always pass an array
-       // of verses: in the first case we do this by looping through the array
-       // of chapters, and in the second case we just pass it "text"
-       if (Array.isArray(response.versions[0].text[0])) {
-         response.versions[0].text.forEach((chapter, j) => {
-           contentDiv.appendChild(LayoutChapter(chapter, j, firstVerse));
-         });
-       } else {
-         contentDiv.appendChild(LayoutChapter(response.versions[0].text, 0, 0));
-       }
-     }
-
-     function LayoutChapter(chapter, chapterIndex, firstVerse) {
-       var div = document.createElement("div");
-       if (chapterIndex == 0 && firstVerse != 0) {
-         // This handles the case where our selection begins mid-chapter,
-         // so we need to start the verse numbering from the verse returned
-         // in "sections[1]"
-         div.style.counterReset = "verse-number " + firstVerse;
-       }
-
-       div.className = "chapter";
-       var h3 = document.createElement("h3");
-       h3.className = "chapterHeading";
-       h3.appendChild(document.createTextNode("פרק"));
-       div.appendChild(h3);
-
-       // Here we use innerHTML instead of createTextNode, because there is
-       // some embedded HTML in the text returned (which we style with CSS)
-       chapter.forEach((verse) => {
-         var span = document.createElement("span");
-         span.className = "verse";
-         span.innerHTML = verse;
-         div.appendChild(span);
-       });
-
-       return div;
-     }
     </script>
-    <style type="text/css">
-     /* Page layout */
-     :root {
-       color: white;
-       background-color: black;
-       direction: rtl;
-     }
-     #index-wrapper {
-       box-sizing: border-box;
-       float: right;
-       width: 37vw;
-       height: 100vh;
-       position: fixed;
-     }
-     #index-title {
-       height: 8vh;
-     }
-     #index  {
-       height: 88vh;
-       overflow-y: scroll;
-     }
-     .content-wrapper {
-       margin-top: 0.6em;
-     }
-     .content-wrapper:first-child {
-       margin-top: 0px
-     }
-     #content {
-       box-sizing: border-box;
-       float: left;
-       height: 98vh;
-       width: 61vw;
-       padding: 0px 8px;
-       overflow: scroll;
-       border-style: solid;
-     }
-     thead { /* makes the table header fixed when scrolling */
-       position:sticky;
-       top:0;
-       border-top:0;
-       background: #cccccc;
-     }
-
-     /* Text styling */
-     h1 {
-       text-align: center;
-       font-family: Stam Sefarad CLM, Stam Ashkenaz CLM, Guttman Stam;
-       font-size: 32pt;
-     }
-     h2.textHeading {
-       color: teal;
-       font-size: 44pt;
-       margin-top: 0em;
-       margin-bottom: 0.4em;
-     }
-     h3.chapterHeading {
-       font-size: 40pt;
-       color: blue;
-       margin-top: 0.4em;
-       margin-bottom: 0.2em;
-     }
-     #content {
-       font-size: 32pt;
-       font-family: SBL Hebrew, Taamey David CLM, Taamey Frank CLM, SBL Hebrew;
-       text-align: justify;
-     }
-     #index {
-       font-size: 16pt;
-     }
-     button.apiLink {
-       background-color: black;
-       color: lime;
-       border: none;
-       text-decoration: underline;
-       text-align: right;
-       font-size: 16pt;
-     }
-     button.apiLink:hover {
-       background-color: silver;
-       cursor: pointer;
-     }
-
-     /* Styling for the classes in the text returned by Sefaria: */
-
-     /* Ketiv */
-     .mam-kq-k {
-       font-size: smaller;
-       color: red;
-     }
-
-     /* Qere */
-     .mam-kq-q {
-       color: green;
-     }
-
-     /* Parasha Setuma */
-     .mam-spi-samekh:before {
-       content: " ";
-       margin-left: 1em;
-     }
-
-     .mam-spi-samekh:after {
-       content: " ";
-       margin-left: 1em;
-     }
-
-     /* Parasha Setuma and Petuha */
-     .mam-spi-samekh, .mam-spi-pe
-     {
-       color: silver;
-       font-size: smaller;
-     }
-
-     /* Sefaria returns arrays of text with no numbering.
-        Define css counters to add chapter and verse numbering
-        and also add some inter-verse spacing */
-     div#content h2 {
-       counter-reset: chapter-number;
-     }
-
-     div.chapter {
-       counter-reset: verse-number;
-     }
-
-     h3.chapterHeading:after {
-       counter-increment: chapter-number;
-       content: counter(chapter-number, hebrew);
-       margin-right: 0.25em;
-     }
-
-     span.verse:after {
-       content: " ";
-       margin-left: 0.2em;
-     }
-     span.verse:before {
-       counter-increment: verse-number;
-       content: counter(verse-number, hebrew);
-       font-size: medium;
-       margin-left: 1em;
-     }
-    </style>
+    <link rel="stylesheet" href="lectionaries.css" type="text/css">
   </head>
   <body onLoad="PopulateTable();">
     <div id="index-wrapper">
