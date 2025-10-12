@@ -6,4 +6,6 @@ HTML pages to gather conveniently in one place plans for daily (or weekly or wha
 This is the yearly bible and Mishna study plan used by the Syrian community.
 Texts are downloaded using the Sefaria API
 
-Currently there is only one file containing all the html, css and js for the project. As we add more content, we will extract some of this to library files
+## Tenachyomi.html
+
+This is closely based on the study plan found at tenachyomi.com, except that Chronicles is moved before Ezra-Nehemiah.
