@@ -8,7 +8,6 @@
 #index-wrapper {
     box-sizing: border-box;
     float: right;
-    width: 37vw;
     height: 100vh;
     position: fixed;
 }
@@ -34,7 +33,6 @@
     box-sizing: border-box;
     float: left;
     height: 98vh;
-    width: 61vw;
     padding: 0px 8px;
     overflow: scroll;
     border-style: solid;

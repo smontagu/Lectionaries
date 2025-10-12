@@ -338,7 +338,7 @@
        ]
      ];
 
-     const version = "source";
+     const version = "'source'";
 
      function PopulateTable() {
        var table = document.getElementById("tableBody");
@@ -353,7 +353,7 @@
            var button = document.createElement("button");
            button.className = "apiLink";
            button.setAttribute("onclick",
-                               "CallGetText([" + cell[0] + "], version);");
+                               "CallGetText([" + cell[0] + "], " + version + ");");
            button.innerHTML = cell[1];
            td.appendChild(button)
 
@@ -365,6 +365,14 @@
 
     </script>
     <link rel="stylesheet" href="lectionaries.css" type="text/css">
+    <style type="text/css">
+     #index-wrapper {
+         width: 37vw;
+     }
+     #content {
+         width: 61vw;
+     }
+    </style>
   </head>
   <body onLoad="PopulateTable();">
     <div id="index-wrapper">

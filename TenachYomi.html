@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset=utf-8>
+    <title>Nach Yomi links</title>
+    <script type="text/javascript" src="lectionaries.js"></script>
+    <script type="text/javascript">
+    const TenachYomi = [
+    [ "תשרי",
+      23,
+      [
+        [["'Joshua.1'", "יהושע א"], ["'Ruth.1'", "רות א"]],
+        [["'Joshua.2'", "יהושע ב"], ["'Ruth.2'", "רות ב"]],
+        [["'Joshua.3'", "יהושע ג"], ["'Ruth.3'", "רות ג"]],
+        [["'Joshua.4'", "יהושע ד"], ["'Ruth.4'", "רות ד"]],
+        [["'Joshua.5'", "יהושע ה"], ["'Psalms.1'", "תהלים א"]],
+        [["'Joshua.6'", "יהושע ו"], ["'Psalms.2'", "תהלים ב"]],
+        [["'Joshua.7'", "יהושע ז"], ["'Psalms.3-4'", "תהלים ג-ד"]],
+        [["'Joshua.8'", "יהושע ח"], ["'Psalms.5'", "תהלים ה"]]
+      ]
+     ],
+     [ "מרחשון",
+       1,
+       [
+         [["'Joshua.9'", "יהושע ט"], ["'Psalms.6'", "תהלים ו"]],
+         [["'Joshua.10'", "יהושע י"], ["'Psalms.7'", "תהלים ז"]],
+         [["'Joshua.11'", "יהושע יא"], ["'Psalms.8'", "תהלים ח"]],
+         [["'Joshua.12'", "יהושע יב"], ["'Psalms.9'", "תהלים ט"]],
+         [["'Joshua.13'", "יהושע יג"], ["'Psalms.10'", "תהלים י"]],
+         [["'Joshua.14'", "יהושע יד"], ["'Psalms.11'", "תהלים יא"]],
+         [["'Joshua.15:1-19'", "יהושע טו א-יט"], ["'Psalms.12'", "תהלים יב"]],
+         [["'Joshua.15:20-63'", "יהושע טו כ-סג"], ["'Psalms.13-14'", "תהלים יג-יד"]],
+         [["'Joshua.16-17'", "יהושע טז-יז"], ["'Psalms.15-16'", "תהלים טו-טז"]],
+         [["'Joshua.18", "יהושע יח"], ["'Psalms.17'", "תהלים יז"]],
+         [["'Joshua.19'", "יהושע יט"], ["'Psalms.18:1-21'", "תהלים יח א-כא"]],
+         [["'Joshua.20'", "יהושע כ"], ["'Psalms.18:22-51'", "תהלים יח כב-נא"]],
+         [["'Joshua.21'", "יהושע כא"], ["'Psalms.19'", "תהלים יט"]],
+         [["'Joshua.22'", "יהושע כב"], ["'Psalms.20'", "תהלים כ"]],
+         [["'Joshua.23'", "יהושע כג"], ["'Psalms.21'", "תהלים כא"]],
+         [["'Joshua.24'", "יהושע כד"], ["'Psalms.22'", "תהלים כב"]],
+         [["'Judges.1'", "שופטים א"], ["'Psalms.23-24'", "תהלים כג-כד"]],
+         [["'Judges.2'", "שופטים ב"], ["'Psalms.25'", "תהלים כה"]],
+         [["'Judges.3'", "שופטים ג"], ["'Psalms.26'", "תהלים כו"]],
+         [["'Judges.4'", "שופטים ד"], ["'Psalms.27'", "תהלים כז"]],
+         [["'Judges.5'", "שופטים ה"], ["'Psalms.28-29'", "תהלים כח-כט"]],
+         [["'Judges.6'", "שופטים ו"], ["'Psalms.30'", "תהלים ל"]],
+         [["'Judges.7'", "שופטים ז"], ["'Psalms.31'", "תהלים לא"]],
+         [["'Judges.8'", "שופטים ח"], ["'Psalms.32'", "תהלים לב"]],
+         [["'Judges.9'", "שופטים ט"], ["'Psalms.33'", "תהלים לג"]],
+         [["'Judges.10'", "שופטים י"], ["'Psalms.34'", "תהלים לד"]],
+         [["'Judges.11'", "שופטים יא"], ["'Psalms.35'", "תהלים לה"]],
+         [["'Judges.12'", "שופטים יב"], ["'Psalms.36'", "תהלים לו"]],
+         [["'Judges.13'", "שופטים יג"], ["'Psalms.37:1-21'", "תהלים לז א-כא"]],
+         [["'Judges.14'", "שופטים יד"], ["'Psalms.37:22-40'", "תהלים לז כב-מ"]]
+       ]
+     ],
+     [ "כסלו",
+       1,
+       [
+         [["'Judges.15'", "שופטים טו"], ["'Psalms.38'", "תהלים לח"]],
+         [["'Judges.16'", "שופטים טז"], ["'Psalms.39'", "תהלים לט"]],
+         [["'Judges.17'", "שופטים יז"], ["'Psalms.40'", "תהלים מ"]],
+         [["'Judges.18'", "שופטים יח"], ["'Psalms.41'", "תהלים מא"]],
+         [["'Judges.19'", "שופטים יט"], ["'Psalms.42-43'", "תהלים מב-מג"]],
+         [["'Judges.20'", "שופטים כ"], ["'Psalms.44:1-9'", "תהלים מד א-ט"]],
+         [["'Judges.21'", "שופטים כא"], ["'Psalms.44:10-27'", "תהלים מד י-כז"]],
+         [["'I Samuel.1'", "שמואל א א"], ["'Psalms.45'", "תהלים מה"]],
+         [["'I Samuel.2'", "שמואל א ב"], ["'Psalms.46'", "תהלים מו"]],
+         [["'I Samuel.3-4'", "שמואל א ג-ד"], ["'Psalms.47'", "תהלים מז"]],
+         [["'I Samuel.5-6'", "שמואל א ה-ו"], ["'Psalms.48'", "תהלים מח"]],
+         [["'I Samuel.7'", "שמואל א ז"], ["'Psalms.49'", "תהלים מט"]],
+         [["'I Samuel.8'", "שמואל א ח"], ["'Psalms.50:1-12'", "תהלים נ א-יב"]],
+         [["'I Samuel.9'", "שמואל א ט"], ["'Psalms.50:13-23'", "תהלים נ יג-כג"]],
+         [["'I Samuel.10'", "שמואל א י"], ["'Psalms.51:1-11'", "תהלים נא א-יא"]],
+         [["'I Samuel.11'", "שמואל א יא"], ["'Psalms.51:12-21'", "תהלים נא יב-כא"]],
+         [["'I Samuel.12'", "שמואל א יב"], ["'Psalms.52'", "תהלים נב"]],
+         [["'I Samuel.13'", "שמואל א יג"], ["'Psalms.53-54'", "תהלים נג-נד"]],
+         [["'I Samuel.14:1-24'", "שמואל א יד א-כד"], ["'Psalms.55'", "תהלים נה"]],
+         [["'I Samuel.14:25-52'", "שמואל א יד כה-נב"], ["'Psalms.56'", "תהלים נו"]],
+         [["'I Samuel.15'", "שמואל א טו"], ["'Psalms.57-58'", "תהלים נז-נח"]],
+         [["'I Samuel.16'", "שמואל א טז"], ["'Psalms.59'", "תהלים נט"]],
+         [["'I Samuel.17:1-25'", "שמואל א יז א-כה"], ["'Psalms.60'", "תהלים ס"]],
+         [["'I Samuel.17:26-58'", "שמואל א יז כו-נח"], ["'Psalms.61-62'", "תהלים סא-סב"]],
+         [["'I Samuel.18'", "שמואל א יח"], ["'Psalms.63-64'", "תהלים סג-סד"]],
+         [["'I Samuel.19'", "שמואל א יט"], ["'Psalms.65'", "תהלים סה"]],
+         [["'I Samuel.20'", "שמואל א כ"], ["'Psalms.66'", "תהלים סו"]],
+         [["'I Samuel.21-22'", "שמואל א כא-כב"], ["'Psalms.67'", "תהלים סז"]],
+         [["'I Samuel.23:1-15'", "שמואל א כג א-טו"], ["'Psalms.68:1-18'", "תהלים סח א-יח"]],
+         [["'I Samuel.23:16-29'", "שמואל א כג טז-כט"], ["'Psalms.68:19-36'", "תהלים סח יט-לו"]]
+       ]
+     ]
+   ];
+
+    const version = "\"hebrew|Tanach with Ta'amei Hamikra\"";
+//     const version = "\"source\"";
+
+    function PopulateTable() {
+      var table = document.getElementById("tableBody");
+
+      TenachYomi.forEach((month) => {
+        monthTitle = month[0];
+        dayOfMonth = month[1];
+        readings = month[2];
+        var header = document.createElement("tr");
+        var monthHead = document.createElement("td");
+        monthHead.innerHTML = monthTitle;
+        monthHead.setAttribute("colspan", 3);
+        monthHead.setAttribute("align", "center");
+        header.appendChild(monthHead);
+        table.appendChild(header);
+
+        readings.forEach((row) => {
+
+          var tr = document.createElement("tr");
+
+          var dayTd = document.createElement("td");
+          dayTd.innerHTML = dayOfMonth++;
+          tr.appendChild(dayTd);
+
+          row.forEach((cell) => {
+            var td = document.createElement("td");
+
+            // use innerHTML for the button text so that we can pass in <br> etc.
+            var button = document.createElement("button");
+            var buttonFunctionCall = "CallGetText([" +
+                                     cell[0] +
+                                     "], " +
+                                     version +
+                                     ");";
+            button.className = "apiLink";
+            button.setAttribute("onclick", buttonFunctionCall);
+            button.innerHTML = cell[1];
+            td.appendChild(button)
+
+            tr.appendChild(td);
+
+          });
+          table.appendChild(tr);
+        });
+      });
+    }
+    </script>
+    <link rel="stylesheet" href="lectionaries.css" type="text/css">
+    <style type="text/css">
+     #index-wrapper {
+         width: 21vw;
+     }
+     #content {
+         width: 77vw;
+     }
+     #index-title {
+         height: 18vh;
+     }
+     #index  {
+         height: 77vh;
+     }
+    </style>
+  </head>
+  <body onLoad="PopulateTable();">
+    <div id="index-wrapper">
+      <div id="index-title">
+        <h1>נ״ך יומי<br>שנה פשוטה</h1>
+      </div>
+      <div id="index">
+        <table border 1">
+          <thead>
+            <tr>
+              <th>יום</th>
+              <th>נביאים</th>
+              <th>כתובים</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="content">
+      <div style="color: silver; font-size: smaller">
+        <p>לחץ על אחד הקישורים בטבלה כדי לטעון קריאה</p>
+        <p dir="ltr">Click one of the links in the table to download a reading</p>
+      </div>
+  </body>
+</html>
