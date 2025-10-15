@@ -33,23 +33,9 @@
           tr.appendChild(dayTd);
 
           row.forEach((cell) => {
-            var td = document.createElement("td");
-
-            // use innerHTML for the button text so that we can pass in <br> etc.
-            var button = document.createElement("button");
-            var buttonFunctionCall = "CallGetText([" +
-                                     cell[0] +
-                                     "], " +
-                                     version +
-                                     ");";
-            button.className = "apiLink";
-            button.setAttribute("onclick", buttonFunctionCall);
-            button.innerHTML = cell[1];
-            td.appendChild(button)
-
-            tr.appendChild(td);
-
+            tr.appendChild(CreateLink(cell));
           });
+
           table.appendChild(tr);
         });
       });

@@ -93,3 +93,17 @@ function LayoutChapter(chapter, chapterIndex, firstVerse) {
 
   return div;
 }
+
+function CreateLink(cell) {
+  var td = document.createElement("td");
+
+  // use innerHTML for the button text so that we can pass in <br> etc.
+  var button = document.createElement("button");
+  button.className = "apiLink";
+  button.setAttribute("onclick",
+                      "CallGetText([" + cell[0] + "], " + version + ");");
+  button.innerHTML = cell[1];
+  td.appendChild(button)
+
+  return td;
+}
