@@ -17,7 +17,7 @@
 }
 
 #index  {
-    height: 88vh;
+    height: 84vh;
     overflow-y: scroll;
 }
 
@@ -50,6 +50,7 @@ h1 {
     text-align: center;
     font-family: Stam Sefarad CLM, Stam Ashkenaz CLM, Guttman Stam;
     font-size: 32pt;
+    margin-top: 0pt;
 }
 
 h2.textHeading {
@@ -64,6 +65,11 @@ h3.chapterHeading {
     color: blue;
     margin-top: 0.4em;
     margin-bottom: 0.2em;
+}
+
+#date {
+    text-align: center;
+    font-size: 20pt;
 }
 
 #content {
