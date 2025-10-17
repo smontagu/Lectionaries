@@ -1,3 +1,9 @@
+// Define some possible Sefaria versions
+// (later we will provide an option to choose version)
+const tanachWithTeamim         = "\"hebrew|Tanach with Ta'amei Hamikra\"";
+const tanachAccordingToMasorah = "\"hebrew|Miqra according to the Masorah\"";
+const defaultVersion           = "\"source\"";
+
 function CallGetText(citations, version) {
   const options = {method: 'GET', headers: {accept: 'application/json'}};
   const baseUrl = "https://www.sefaria.org/api/v3/texts/";

@@ -6,7 +6,9 @@
     <script type="text/javascript" src="lectionaries.js"></script>
     <script type="text/javascript" src="MishmaraData.js"></script>
     <script type="text/javascript">
-     const version = "'source'";
+     // Currently we have to use defaultVersion because we send the same version
+     // string for Miqra and Mishna. In the future we will be more flexible.
+     const version = defaultVersion;
 
      function PopulateTable() {
        var table = document.getElementById("tableBody");
