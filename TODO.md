@@ -1,6 +1,7 @@
 # TODO list for Lectionaries
 
 - Content
+  - Add error handling for when the sefaria API is down
   - Add Tanachyomi (cycle based on sedarim)
   - Add leapyears to TenachYomi
   - Add multi-language option
