@@ -60,6 +60,38 @@ h2.textHeading {
     margin-bottom: 0.4em;
 }
 
+h2.errorHeading {
+    font-size: inherit;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+h2.errorHeading > span {
+    color: blue;
+    background-color: white;
+    padding-left: 12pt;
+    padding-right: 12pt;
+}
+
+div.BSOD {
+    height: 98%;
+    width: 98%;
+    padding-top: 20%;
+    padding-left: 2em;
+    direction: ltr;
+    background-color: blue;
+    font-size: 18pt;
+    font-family: monospace;
+}
+
+.errorMessage {
+    color: gold;
+}
+
+.errorMessageContainer {
+    margin-top: 1em;
+}
+
 h3.chapterHeading {
     font-size: 40pt;
     color: blue;

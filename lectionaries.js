@@ -4,7 +4,7 @@ const tanachWithTeamim         = "\"hebrew|Tanach with Ta'amei Hamikra\"";
 const tanachAccordingToMasorah = "\"hebrew|Miqra according to the Masorah\"";
 const defaultVersion           = "\"source\"";
 
-function CallGetText(citations, version) {
+async function CallGetText(citations, version) {
   const options = {method: 'GET', headers: {accept: 'application/json'}};
   const baseUrl = "https://www.sefaria.org/api/v3/texts/";
   const params = "?version=" + version +
@@ -13,24 +13,21 @@ function CallGetText(citations, version) {
   var frame = document.getElementById("content");
 
   frame.replaceChildren();
-  citations.forEach((citation, i) => {
+  for (citation of citations) {
     var url = baseUrl + citation + params;
 
-    // Append the div to the container before calling the API to get its
-    // content, because fetch is async and if we have more than one
-    // citation the second one might finish before the first
-    var contentDiv = document.createElement("div");
-    contentDiv.className = "content-wrapper";
-    frame.appendChild(contentDiv);
-
-    fetch(url, options)
-      .then(response => response.json())
-      .then(response => WriteFrame(response, contentDiv))
-      .catch(err => console.error(err));
-  });
+    try {
+      let response = await fetch(url, options);
+      let json = await response.json();
+      frame.appendChild(WriteContent(json));
+    } catch (err) {
+      frame.appendChild(WriteError(err));
+      break;
+    }
+  }
 }
 
-function WriteFrame(response, contentDiv) {
+function WriteContent(response) {
   // "sections" in the json give a reference to the beginning of the
   // returned text. If whole chapters are requested, the array is
   // length 1, and contains the first chapter. If the request begins
@@ -41,6 +38,8 @@ function WriteFrame(response, contentDiv) {
   // we can assume that they are always "chapter" and "verse" (or
   // "mishna", but that makes no practical difference at least for now)
   // We will use these for zero-based CSS counter-reset, so subtract 1
+  var contentDiv = document.createElement("div");
+  contentDiv.className = "content-wrapper";
   var firstChapter = response.sections[0] - 1;
   var firstVerse =
       (response.sections.length > 1) ? response.sections[1] - 1: 0;
@@ -71,6 +70,7 @@ function WriteFrame(response, contentDiv) {
     contentDiv.appendChild(LayoutChapter(response.versions[0].text, 0,
                                          firstVerse));
   }
+  return contentDiv;
 }
 
 function LayoutChapter(chapter, chapterIndex, firstVerse) {
@@ -112,4 +112,34 @@ function CreateLink(cell) {
   td.appendChild(button)
 
   return td;
+}
+
+function WriteError(err) {
+  var errorDiv = document.createElement("div");
+  errorDiv.className = "BSOD";
+  var h2 = document.createElement("h2");
+  h2.className = "errorHeading";
+  h2.appendChild(MakeElement("span", "", " Error loading text "));
+  errorDiv.appendChild(h2);
+
+  var div = document.createElement("div");
+  div.className = "errorMessageContainer";
+
+  div.appendChild(MakeElement("p", "",
+                              "There seems to be a problem with Sefaria " +
+                              "or with your internet connection. " +
+                              "Try again later."));
+  div.appendChild(MakeElement("p", "",
+                              "This is the text of the error message:"));
+  div.appendChild(MakeElement("p", "errorMessage", err));
+
+  errorDiv.appendChild(div);
+  return errorDiv;
+}
+
+function MakeElement(tagName, className, textContent) {
+  var element = document.createElement(tagName);
+  element.className = className;
+  element.appendChild(document.createTextNode(textContent));
+  return element;
 }
