@@ -7,39 +7,39 @@
     <script type="text/javascript" src="TenachYomiData.js"></script>
     <script type="text/javascript">
 
-    const version = tanachAccordingToMasorah;
+     const version = tanachAccordingToMasorah;
 
-    function PopulateTable() {
-      var table = document.getElementById("tableBody");
+     function PopulateTable() {
+       var table = document.getElementById("tableBody");
 
-      TenachYomi.forEach((month) => {
-        monthTitle = month[0];
-        dayOfMonth = month[1];
-        readings = month[2];
-        var header = document.createElement("tr");
-        var monthHead = document.createElement("td");
-        monthHead.innerHTML = monthTitle;
-        monthHead.setAttribute("colspan", 3);
-        monthHead.setAttribute("align", "center");
-        header.appendChild(monthHead);
-        table.appendChild(header);
+       TenachYomi.forEach((month) => {
+         monthTitle = month[0];
+         dayOfMonth = month[1];
+         readings = month[2];
+         var header = document.createElement("tr");
+         var monthHead = document.createElement("td");
+         monthHead.innerHTML = monthTitle;
+         monthHead.setAttribute("colspan", 3);
+         monthHead.setAttribute("align", "center");
+         header.appendChild(monthHead);
+         table.appendChild(header);
 
-        readings.forEach((row) => {
+         readings.forEach((row) => {
 
-          var tr = document.createElement("tr");
+           var tr = document.createElement("tr");
 
-          var dayTd = document.createElement("td");
-          dayTd.innerHTML = dayOfMonth++;
-          tr.appendChild(dayTd);
+           var dayTd = document.createElement("td");
+           dayTd.innerHTML = dayOfMonth++;
+           tr.appendChild(dayTd);
 
-          row.forEach((cell) => {
-            tr.appendChild(CreateLink(cell));
-          });
+           row.forEach((cell) => {
+             tr.appendChild(CreateLink(cell));
+           });
 
-          table.appendChild(tr);
-        });
-      });
-    }
+           table.appendChild(tr);
+         });
+       });
+     }
     </script>
     <link rel="stylesheet" href="lectionaries.css" type="text/css">
     <style type="text/css">
