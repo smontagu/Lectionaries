@@ -266,7 +266,7 @@ const TenachYomi =
   "סיון",
   1,
   [
-   [["'Ezekiel.17'", "יחזקאל יז"], ["'Ecclesiastes.1'", "קהלץ א"]],
+   [["'Ezekiel.17'", "יחזקאל יז"], ["'Ecclesiastes.1'", "קהלת א"]],
    [["'Ezekiel.18'", "יחזקאל יח"], ["'Ecclesiastes.2'", "קהלת ב"]],
    [["'Ezekiel.19'", "יחזקאל יט"], ["'Ecclesiastes.3'", "קהלת ג"]],
    [["'Ezekiel.20'", "יחזקאל כ"], ["'Ecclesiastes.4'", "קהלת ד"]],
