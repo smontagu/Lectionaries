@@ -6,40 +6,8 @@
     <script type="text/javascript" src="lectionaries.js"></script>
     <script type="text/javascript" src="TenachYomiData.js"></script>
     <script type="text/javascript">
-
      const version = tanachAccordingToMasorah;
-
-     function PopulateTable() {
-       var table = document.getElementById("tableBody");
-
-       TenachYomi.forEach((month) => {
-         monthTitle = month[0];
-         dayOfMonth = month[1];
-         readings = month[2];
-         var header = document.createElement("tr");
-         var monthHead = document.createElement("td");
-         monthHead.innerHTML = monthTitle;
-         monthHead.setAttribute("colspan", 3);
-         monthHead.setAttribute("align", "center");
-         header.appendChild(monthHead);
-         table.appendChild(header);
-
-         readings.forEach((row) => {
-
-           var tr = document.createElement("tr");
-
-           var dayTd = document.createElement("td");
-           dayTd.innerHTML = dayOfMonth++;
-           tr.appendChild(dayTd);
-
-           row.forEach((cell) => {
-             tr.appendChild(CreateLink(cell));
-           });
-
-           table.appendChild(tr);
-         });
-       });
-     }
+     const leapYear = false;
     </script>
     <link rel="stylesheet" href="lectionaries.css" type="text/css">
     <style type="text/css">
@@ -50,20 +18,21 @@
          width: 77vw;
      }
      #index-title {
-         height: 18vh;
+         height: 20vh;
      }
      #index  {
-         height: 77vh;
+         height: 75vh;
      }
     </style>
   </head>
-  <body onLoad="PopulateTable();">
+  <body onLoad="TenachYomiPopulateTable();">
     <div id="index-wrapper">
       <div id="date">
         <script src="https://www.hebcal.com/etc/hdate-he-v2.js"></script>
       </div>
       <div id="index-title">
         <h1>נ״ך יומי<br>שנה פשוטה</h1>
+        <p id="link-container"><a href="TenachYomiMeuberet.html">לחץ כאן לשנה מעוברת</a></p>
       </div>
       <div id="index">
         <table border="1">

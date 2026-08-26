@@ -9,20 +9,6 @@
      // Currently we have to use defaultVersion because we send the same version
      // string for Miqra and Mishna. In the future we will be more flexible.
      const version = defaultVersion;
-
-     function PopulateTable() {
-       var table = document.getElementById("tableBody");
-
-       Mishmara.forEach((row) => {
-         var tr = document.createElement("tr");
-
-         row.forEach((cell) => {
-           tr.appendChild(CreateLink(cell));
-         });
-         table.appendChild(tr);
-       });
-     }
-
     </script>
     <link rel="stylesheet" href="lectionaries.css" type="text/css">
     <style type="text/css">
@@ -34,7 +20,7 @@
      }
     </style>
   </head>
-  <body onLoad="PopulateTable();">
+  <body onLoad="MishmaraPopulateTable();">
     <div id="index-wrapper">
       <div id="date">
         <script src="https://www.hebcal.com/etc/hdate-he-v2.js"></script>

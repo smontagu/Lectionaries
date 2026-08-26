@@ -1,4 +1,4 @@
-const TenachYomi =
+const TenachYomiPeshuta =
 [
  [
   "תשרי",

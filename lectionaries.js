@@ -143,3 +143,49 @@ function MakeElement(tagName, className, textContent) {
   element.appendChild(document.createTextNode(textContent));
   return element;
 }
+
+function MishmaraPopulateTable() {
+  var table = document.getElementById("tableBody");
+
+  Mishmara.forEach((row) => {
+    var tr = document.createElement("tr");
+
+    row.forEach((cell) => {
+      tr.appendChild(CreateLink(cell));
+    });
+    table.appendChild(tr);
+  });
+}
+
+function TenachYomiPopulateTable() {
+  var table = document.getElementById("tableBody");
+  var data = leapYear ? TenachYomiMeuberet : TenachYomiPeshuta;
+
+  data.forEach((month) => {
+    monthTitle = month[0];
+    dayOfMonth = month[1];
+    readings = month[2];
+    var header = document.createElement("tr");
+    var monthHead = document.createElement("td");
+    monthHead.innerHTML = monthTitle;
+    monthHead.setAttribute("colspan", 3);
+    monthHead.setAttribute("align", "center");
+    header.appendChild(monthHead);
+    table.appendChild(header);
+
+    readings.forEach((row) => {
+
+      var tr = document.createElement("tr");
+
+      var dayTd = document.createElement("td");
+      dayTd.innerHTML = dayOfMonth++;
+      tr.appendChild(dayTd);
+
+      row.forEach((cell) => {
+        tr.appendChild(CreateLink(cell));
+      });
+
+      table.appendChild(tr);
+    });
+  });
+}

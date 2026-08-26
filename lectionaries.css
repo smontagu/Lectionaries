@@ -51,6 +51,7 @@ h1 {
     font-family: Stam Sefarad CLM, Stam Ashkenaz CLM, Guttman Stam;
     font-size: 32pt;
     margin-top: 0pt;
+    margin-bottom: 0pt;
 }
 
 h2.textHeading {
@@ -126,6 +127,17 @@ button.apiLink {
 button.apiLink:hover {
     background-color: silver;
     cursor: pointer;
+}
+
+#link-container {
+    text-align: center;
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+a {
+    color: lime;
+    font-size: 16pt;
 }
 
 /* Styling for the classes in the text returned by Sefaria: */
