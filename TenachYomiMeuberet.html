@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset=utf-8>
+    <title>Nach Yomi links</title>
+    <script type="text/javascript" src="lectionaries.js"></script>
+    <script type="text/javascript" src="TenachYomiData.js"></script>
+    <script type="text/javascript">
+     const version = tanachAccordingToMasorah;
+     const leapYear = true;
+    </script>
+    <link rel="stylesheet" href="lectionaries.css" type="text/css">
+    <style type="text/css">
+     #index-wrapper {
+         width: 21vw;
+     }
+     #content {
+         width: 77vw;
+     }
+     #index-title {
+         height: 20vh;
+     }
+     #index  {
+         height: 75vh;
+     }
+    </style>
+  </head>
+  <body onLoad="TenachYomiPopulateTable();">
+    <div id="index-wrapper">
+      <div id="date">
+        <script src="https://www.hebcal.com/etc/hdate-he-v2.js"></script>
+      </div>
+      <div id="index-title">
+        <h1>נ״ך יומי<br>שנה מעוברת</h1>
+        <p id="link-container"><a href="TenachYomi.html">לחץ כאן לשנה פשוטה</a></p>
+      </div>
+      <div id="index">
+        <table border="1">
+          <thead>
+            <tr>
+              <th>יום</th>
+              <th>נביאים</th>
+              <th>כתובים</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="content">
+      <div style="color: silver; font-size: smaller">
+        <p>לחץ על אחד הקישורים בטבלה כדי לטעון קריאה</p>
+        <p dir="ltr">Click one of the links in the table to download a reading</p>
+      </div>
+  </body>
+</html>
