@@ -33,7 +33,7 @@
     box-sizing: border-box;
     float: left;
     height: 98vh;
-    padding: 0px 8px;
+    padding: 0em 0.25em;
     overflow: scroll;
     border-style: solid;
 }
